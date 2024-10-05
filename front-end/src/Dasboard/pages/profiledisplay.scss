@@ -1,0 +1,14 @@
+.profiles-wrapper {
+    display: grid;
+    justify-content: center;
+    align-content: start;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Define the base min width */
+  }
+  
+  .profiles-wrapper > * {
+    width: 100%;
+    max-width: max-content; /* Ensure the max width grows with content */
+    justify-self: stretch;  /* Make all items stretch to the same width */
+  }
+  
