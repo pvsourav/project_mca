@@ -5,13 +5,14 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/tkm.png'
 
 const navItems = [
-  { name: 'Dashboard', icon: <Home />, route: '/dashboard' },
-  { name: 'My Content', icon: <FileText />, route: '/cms' },
-  { name: 'Alumni', icon: <Users />, route: '/alumni' },
-  { name: 'Users', icon: <UserCircle />, route: '/users' },
-  { name: 'Contributions', icon: <FileText />, route: '/contributions' },
-  { name: 'Learning Materials', icon: <Book />, route: '/learning-materials' }
+  { name: 'Dashboard', icon: <Home />, route: '/admin/dashboard' },
+  { name: 'My Content', icon: <FileText />, route: '/admin/cms' },
+  { name: 'Alumni', icon: <Users />, route: '/admin/alumni' },
+  { name: 'Users', icon: <UserCircle />, route: '/admin/users' },
+  { name: 'Contributions', icon: <FileText />, route: '/admin/contributions' },
+  { name: 'Learning Materials', icon: <Book />, route: '/admin/learning-materials' }
 ];
+
 
 const SideBar = () => {
   const location = useLocation();

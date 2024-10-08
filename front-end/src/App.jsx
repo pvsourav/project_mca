@@ -4,11 +4,9 @@ import './App.scss';
 
 import LandingPage from './landing_page/LandingPage';
 import SignIn from './auth_pages/SignIn';
-import UserProfile from './Dasboard/UserProfile';
 import UserDetails from './auth_pages/UserDetails';
 import SignUp from './auth_pages/SignUp';
-import Dashboard from './Dasboard/Dashboard';
-
+import AdminDashboard from './Dasboard/AdminDashboard';
 
 const App = () => {
   return (
@@ -20,15 +18,7 @@ const App = () => {
           <Route path="/sign-up" element={<SignUp/>} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/details" element={<UserDetails />} />
-
-          <Route path="/admin" element={<Dashboard />} />
-
-
-
-          <Route path="/profile" element={<UserProfile />} />
-          {/* <Route path="/alumni" element={<Alumni />} />
-          <Route path="/news" element={<NewsForm />} />
-          <Route path="*" element={<Navigate to="/landing" replace />} /> */}
+          <Route path="/admin/*" element={<AdminDashboard />} />
         </Routes>
       </div>
     </Router>
