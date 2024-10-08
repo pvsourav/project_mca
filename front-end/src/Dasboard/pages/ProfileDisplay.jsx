@@ -1,137 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // Ensure axios is imported
 import { Search, ChevronDown, FileText, Users, Calendar, MapPin } from 'lucide-react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ProfileCard from '../../components/ProfileCard';
 import './profiledisplay.scss';
 import dp from '../../assets/tkm3.jpeg';
-
-const profiles = [
-  {
-    id: 1,
-    name: "Anand",
-    batch: "2021-25",
-    company: "TCS",
-    location: "Texas, USA",
-    profilePic: 'https://randomuser.me/api/portraits/men/1.jpg'
-  },
-  {
-    id: 2,
-    name: "Priya",
-    batch: "2020-24",
-    company: "Google",
-    location: "California, USA",
-    profilePic: 'https://randomuser.me/api/portraits/women/1.jpg'
-  },
-  {
-    id: 3,
-    name: "Raj kumar",
-    batch: "2022-26",
-    company: "Microsoft",
-    location: "Washington, USA",
-    profilePic: 'https://randomuser.me/api/portraits/men/2.jpg'
-  },
-  {
-    id: 4,
-    name: "Anand Prakash",
-    batch: "2021-25",
-    company: "TCS",
-    location: "Texas, USA",
-    profilePic: 'https://randomuser.me/api/portraits/men/3.jpg'
-  },
-  {
-    id: 5,
-    name: "John Doe",
-    batch: "2020-24",
-    company: "Google",
-    location: "California, USA",
-    profilePic: 'https://randomuser.me/api/portraits/men/4.jpg'
-  },
-  {
-    id: 6,
-    name: "Raj",
-    batch: "2022-26",
-    company: "Microsoft",
-    location: "Washington, USA",
-    profilePic: 'https://randomuser.me/api/portraits/men/5.jpg'
-  },
-  {
-    id: 7,
-    name: "Sara",
-    batch: "2021-25",
-    company: "Amazon",
-    location: "New York, USA",
-    profilePic: 'https://randomuser.me/api/portraits/women/2.jpg'
-  },
-  {
-    id: 8,
-    name: "Vikram",
-    batch: "2020-24",
-    company: "Facebook",
-    location: "Los Angeles, USA",
-    profilePic: 'https://randomuser.me/api/portraits/men/6.jpg'
-  },
-  {
-    id: 9,
-    name: "Sneha",
-    batch: "2022-26",
-    company: "IBM",
-    location: "Chicago, USA",
-    profilePic: 'https://randomuser.me/api/portraits/women/3.jpg'
-  },
-  {
-    id: 10,
-    name: "Ravi",
-    batch: "2021-25",
-    company: "Oracle",
-    location: "San Francisco, USA",
-    profilePic: 'https://randomuser.me/api/portraits/men/7.jpg'
-  },
-  {
-    id: 11,
-    name: "Deepa",
-    batch: "2020-24",
-    company: "Cisco",
-    location: "Austin, USA",
-    profilePic: 'https://randomuser.me/api/portraits/women/4.jpg'
-  },
-  {
-    id: 12,
-    name: "Karan",
-    batch: "2022-26",
-    company: "Intel",
-    location: "Seattle, USA",
-    profilePic: 'https://randomuser.me/api/portraits/men/8.jpg'
-  },
-  {
-    id: 13,
-    name: "Meena",
-    batch: "2021-25",
-    company: "NVIDIA",
-    location: "Miami, USA",
-    profilePic: 'https://randomuser.me/api/portraits/women/5.jpg'
-  },
-  {
-    id: 14,
-    name: "Suresh",
-    batch: "2020-24",
-    company: "Qualcomm",
-    location: "Denver, USA",
-    profilePic: 'https://randomuser.me/api/portraits/men/9.jpg'
-  },
-  {
-    id: 15,
-    name: "Pooja",
-    batch: "2022-26",
-    company: "Samsung",
-    location: "Phoenix, USA",
-    profilePic: 'https://randomuser.me/api/portraits/women/6.jpg'
-  }
-];
+import { useNavigate } from 'react-router-dom';
 
 const ProfileDisplay = () => {
+  const [profiles, setAlumniData] = useState([]); // State to hold alumni data
   const [searchTerm, setSearchTerm] = useState('');
   const [filterBatch, setFilterBatch] = useState('');
   const [filterCompany, setFilterCompany] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if user is signed in
+
+    // Fetch alumni details
+    axios.get('http://localhost:3000/alumnidetails', { withCredentials: true })
+      .then(res => {
+        console.log('Fetched alumni data:', res.data); // Log the response for debugging
+        setAlumniData(res.data); // Set the fetched data to state
+      })
+      .catch(err => {
+        console.error('Error fetching alumni details:', err);
+      });
+  }, [navigate]);
 
   const filteredProfiles = profiles.filter(profile => 
     profile.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -160,16 +55,18 @@ const ProfileDisplay = () => {
             <FileText size={16} className='icon' />
             <span>Type</span>
             <ArrowDropDownIcon size={16} className="chevron-down" />
-            <select onChange={(e) => {}}>
+            <select onChange={(e) => setFilterCompany(e.target.value)}>
               <option value="">All Types</option>
+              {/* Add more options as needed */}
             </select>
           </div>
           <div className="filter-dropdown">
             <Users size={16} className='icon' />
             <span>People</span>
             <ArrowDropDownIcon size={16} className="chevron-down" />
-            <select onChange={(e) => {}}>
+            <select onChange={(e) => setFilterCompany(e.target.value)}>
               <option value="">All People</option>
+              {/* Add more options as needed */}
             </select>
           </div>
           <div className="filter-dropdown">
@@ -178,6 +75,7 @@ const ProfileDisplay = () => {
             <ArrowDropDownIcon size={16} className="chevron-down" />
             <select onChange={(e) => {}}>
               <option value="">Any time</option>
+              {/* Add more options as needed */}
             </select>
           </div>
           <div className="filter-dropdown">
@@ -186,15 +84,16 @@ const ProfileDisplay = () => {
             <ArrowDropDownIcon size={16} className="chevron-down" />
             <select onChange={(e) => {}}>
               <option value="">Anywhere</option>
+              {/* Add more options as needed */}
             </select>
           </div>
         </div>
       </div>
       <div className="profiles-wrapper">
         {filteredProfiles.length > 0 ? (
-          filteredProfiles.map(profile => (
+          filteredProfiles.map((profile, index) => (
             <ProfileCard
-              key={profile.id}
+              key={index} // Use a unique identifier if available
               name={profile.name}
               batch={profile.batch}
               company={profile.company}
