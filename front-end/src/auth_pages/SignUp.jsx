@@ -92,8 +92,10 @@ const SignUp = () => {
       <div className="form-container">
         {!showLoginForm ? (
           <div className="user-form">
-            <h1>Hi There!</h1>
-            <p>Let us know who you are </p>
+            <div className="welcome-text">
+              <h1>Hi There!</h1>
+              <p>Let us know who you are </p>
+            </div>
 
             <div className="user-types">
               <div className="user-type" onClick={() => handleUserSelection('student')}>

@@ -5,6 +5,8 @@ import AboutUs from './AboutUs'
 import Content from './Content'
 import Testimonials from './Testimonials'
 import Footer from './Footer'
+import CmsTemplate from '../components/CmsTemplate'
+import Placements from './Placements'
 
 const LandingPage = () => {
   return (
@@ -13,6 +15,7 @@ const LandingPage = () => {
       <Hero/>
       <AboutUs/>
       <Content/>
+      <Placements/>
       <Testimonials/>
       <Footer/>
     </div>

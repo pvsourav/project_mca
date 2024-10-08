@@ -1,0 +1,124 @@
+.sidebar {
+    width: 280px;
+    background-color: white;
+    border-right: 1px solid #E8EAEE;
+
+    .sidebar-header {
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px;
+      border-bottom: 1px solid #E8EAEE;
+
+      .logo {
+        display: flex;
+        align-items: center;
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+          background-color: #000000;
+          border-radius: 50%;
+          margin-right: 0.5rem;
+          object-fit: cover;
+          overflow: hidden;
+          
+
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .company-name {
+            margin-left: 10px;
+          font-weight: 600;
+          font-size: 1.125rem;
+        }
+      }
+
+      .menu-icon {
+        color: #6b7280;
+      }
+    }
+
+    .sidebar-nav {
+      padding: 30px;
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        li {
+          display: flex;
+          align-items: center;
+          padding: 10px 20px;
+          border-radius: 8px;
+          transition: all 0.4s ease;
+
+          &:hover {
+            background-color: #f1f3f4;
+            color: #000000;
+            transition: all 0.4s ease;
+
+            svg {
+              color: #000000;
+              transition: all 0.4s ease;
+            }
+          }
+
+          &.active {
+            background-color: #15142b;
+            transition: all 0.4s ease;
+            
+            a{
+                color: #ffffff;
+                transition: all 0.4s ease;
+            }
+        
+            
+            svg {
+              color: #ffffff;
+              transition: all 0.4s ease;
+            }
+          }
+
+          a {
+            display: flex;
+            align-items: center;
+            color: #09090B;
+            font-weight: 600;
+            text-decoration: none;
+            width: 100%;
+            transition: all 0.4s ease;
+          }
+
+          svg {
+            margin-right: 0.75rem;
+            width: 20px;
+            height: 20px;
+            color: #9CA3AF;
+            transition: all 0.4s ease;
+          }
+
+          .badge {
+            margin-left: auto;
+            background-color: #FEE2E2;
+            color: rgb(255, 0, 0);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+          }
+
+          .dropdown-icon {
+            margin-left: auto;
+          }
+        }
+      }
+    }
+}

@@ -1,47 +1,42 @@
 import React from 'react';
 import { MapPin, Briefcase, User, MessageSquare, BadgeCheck } from 'lucide-react';
 import './profilecard.scss';
-// import profile_pic from '../assets/tkm3.jpeg'
 
 const ProfileCard = ({ name, batch, company, location, profilePic }) => {
   return (
     <div className="profile-card">
-      <div className="image-wrapper">
-        <img
-          src={profilePic}
-          alt={name}
-          className="profile-image"
-        />
+      <div className="profile-header">
+        <div className="profile-image-container">
+          <img src={profilePic} alt={name} className="profile-image" />
+        </div>
+        <div className="profile-info">
+          <span className="batch-badge">Batch: {batch}</span>
+          <h2 className="profile-name">
+            {name}
+            <BadgeCheck className="badge-icon" size={20} />
+          </h2>
+          <div className="profile-details">
+            <div className="detail-item">
+              <Briefcase size={16} className="detail-icon" />
+              <span>{company}</span>
+            </div>
+            <div className="detail-item">
+              <MapPin size={16} className="detail-icon" />
+              <span>{location}</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="profile-info">
-        <div className="badge">
-          <span>Batch: {batch}</span>
-        </div>
-        <div className="profile-name">
-          <h2>{name}</h2>
-          <BadgeCheck className='icon'/>
-        </div>
-        <div className="detail-wrapper">
-          <div className="detail">
-            <Briefcase size={16} className="icon" />
-            <span>{company}</span>
-          </div>
-          <div className="detail">
-            <MapPin size={16} className="icon" />
-            <span>{location}</span>
-          </div>
-        </div>
-          <div className="button-group">
-            <button className="profile-button">
-              <User size={16} className="button-icon" />
-              View Profile
-            </button>
-            <button className="message-button">
-              <MessageSquare size={16} className="button-icon" />
-              <span>Message</span>
-            </button>
-          </div>
-        </div>
+      <div className="profile-actions">
+        <button className="action-button view-profile">
+          <User size={16} className="button-icon" />
+          View Profile
+        </button>
+        <button className="action-button send-message">
+          <MessageSquare size={16} className="button-icon" />
+          Message
+        </button>
+      </div>
     </div>
   );
 };

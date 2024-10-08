@@ -22,7 +22,7 @@ const Header = () => {
             <li className="header__nav-item"><NavLink to="/services">Services</NavLink></li>
           </ul>
         </nav>
-        <NavLink to="/login" className="header__cta">Sign in</NavLink>
+        <NavLink to="/sign-in" className="header__cta">Sign in</NavLink>
         <button className="header__menu-toggle" onClick={toggleMenu}>
           <span className="header__menu-icon"></span>
         </button>
