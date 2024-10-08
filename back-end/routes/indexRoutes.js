@@ -16,26 +16,21 @@ router.post('/signup', (req, res) => {
 router.post('/signin', (req, res) => {
   authenticationHelper.doSignin(req.body).then((response) => {
     if (response.status === 'success') {
-      console.log(response.user+'hello');
-      
       req.session.userEmail = response.email;
     
       res.json({ response: response});
     } else {
         res.json({ response: response.status });
     }
-  }).catch((error) => {
-    res.status(500).json({ error: 'Signin failed' });
+
   });
 });
 
 router.get('/profile', (req, res) => {
-  console.log("Session in /profile:", req.session.userEmail); // Log session for debugging
+  
   if (req.session.userEmail) {
     res.json({ signedin: true, userEmail: req.session.userEmail });
-  } else {
-    res.status(401).json({ signedin: false, message: "User not signed in" });
-  }
+  } 
 });
 router.get('/alumnidetails', (req, res) => {
   alumniHelper.getAlumniDetails().then((response)=>{

@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const AdminDashboard = () => {
   const [userName, setUserName] = useState('');
-  // const [alumniData, setAlumniData] = useState([]); // State to hold alumni data
+  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,16 +27,6 @@ const AdminDashboard = () => {
         console.error('Session check failed:', err);
         navigate('/sign-in');
       });
-
-    // // Fetch alumni details
-    // axios.get('http://localhost:3000/alumnidetails', { withCredentials: true })
-    //   .then(res => {
-    //     console.log('Fetched alumni data:', res.data); // Log the response for debugging
-    //     setAlumniData(res.data); // Set the fetched data to state
-    //   })
-    //   .catch(err => {
-    //     console.error('Error fetching alumni details:', err);
-    //   });
   }, [navigate]);
 
 
