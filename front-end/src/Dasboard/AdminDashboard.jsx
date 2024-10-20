@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Routes, Link, Navigate, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, Link, Navigate } from 'react-router-dom';
 import { Bell, Settings, ChevronDown, ChevronRight } from 'lucide-react';
 import './admindashboard.scss';
 import user from '../assets/tkm.png';
@@ -8,31 +8,15 @@ import ProfileDisplay from './pages/ProfileDisplay';
 import ContentManagement from './pages/ContentManagement';
 import axios from 'axios';
 
+// Helper function to format path for breadcrumb and h1
+const formatPath = (path) => {
+  return path.charAt(0).toUpperCase() + path.slice(1);
+};
+
 const AdminDashboard = () => {
-  const [userName, setUserName] = useState('');
-  
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Check if user is signed in
-    axios.get('http://localhost:3000/profile', { withCredentials: true })
-      .then(res => {
-        if (res.data.signedin) {
-          setUserName(res.data.userEmail);
-        } else {
-          navigate('/sign-in');
-        }
-      })
-      .catch(err => {
-        console.error('Session check failed:', err);
-        navigate('/sign-in');
-      });
-  }, [navigate]);
-
-
   return (
     <div className="dashboard-layout">
-      <SideBar/>
+      <SideBar />
 
       <div className="main-content">
       <header className="top-header">
@@ -40,7 +24,7 @@ const AdminDashboard = () => {
           <div className="user-profile">
             <img src={user} alt="User" />
             <div className="user-info">
-              <div className="user-name">{userName}</div>
+              <div className="user-name">John Doe</div>
               <div className="user-role">Admin</div>
             </div>
             <ChevronDown size={16} />
@@ -52,17 +36,22 @@ const AdminDashboard = () => {
 
         <main className="content">
           <div className="breadcrumb">
-            <span>Home</span>
-            <ChevronRight size={20}/>
-            <span>Admin</span>
-            <ChevronRight size={20}/>
-            <span className="current">Dashboard</span>
+            {pathSegments.map((segment, index) => (
+              <React.Fragment key={index}>
+                <span className={index === pathSegments.length - 1 ? 'current' : ''}>
+                  {formatPath(segment)}
+                </span>
+                {index < pathSegments.length - 1 && (
+                  <ChevronRight size={20} />
+                )}
+              </React.Fragment>
+            ))}
           </div>
-          <h1>Dashboard</h1>
+          <h1>{formatPath(currentRoute)}</h1>
 
           <Routes>
             <Route index element={<Navigate to="alumni" replace />} />
-            <Route path="alumni" element={<ProfileDisplay/>} />
+            <Route path="alumni" element={<ProfileDisplay />} />
             <Route path="cms" element={<ContentManagement />} />
           </Routes>
         </main>
@@ -72,6 +61,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-          
-
-        

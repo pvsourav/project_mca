@@ -3,11 +3,18 @@ import './testimonials.scss'
 
 const Testimonial = ({ quote, author, role }) => (
   <div className="testimonial">
-    <blockquote className="testimonial__quote">{quote}</blockquote>
     <div className="testimonial__author">
-      <div className="testimonial__name">{author}</div>
-      <div className="testimonial__role">{role}</div>
+      <div className="testimonial__avatar">
+        {author.split(' ').map(name => name[0]).join('')}
+      </div>
+      <div className="testimonial__info">
+        <div className="testimonial__name">{author}</div>
+        <div className="testimonial__role">{role}</div>
+      </div>
     </div>
+    <blockquote className="testimonial__quote">
+      <span className="testimonial__quote-text">{quote}</span>
+    </blockquote>
   </div>
 )
 

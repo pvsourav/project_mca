@@ -1,72 +1,43 @@
 import React from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaYoutube, FaFacebookF, FaTwitter, FaGithub } from 'react-icons/fa';
 import './footer.scss';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-info">
-          <h3 className="footer-title">College University</h3>
-          <p className="footer-description">
-            Empowering the future of technology through comprehensive education and industry-leading research.
-          </p>
-          <div className="footer-social">
-            <a href="#" className="footer-social-link">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="footer-social-link">
-              <FaTwitter />
-            </a>
-            <a href="#" className="footer-social-link">
-              <FaInstagram />
-            </a>
-            <a href="#" className="footer-social-link">
-              <FaLinkedinIn />
-            </a>
+        <div className="footer-left">
+          <div className="footer-logo">
+            <span className="logo-dot"></span>
+            Department of MCA
+          </div>
+          <div className="footer-buttons">
+            <button className="btn btn-primary">Join Course</button>
+            <button className="btn btn-secondary">Contact</button>
           </div>
         </div>
-        <div className="footer-links">
-          <div className="footer-links-column">
-            <h4 className="footer-links-title">About</h4>
-            <ul className="footer-links-list">
-              <li><a href="#">Our Mission</a></li>
-              <li><a href="#">History</a></li>
-              <li><a href="#">Leadership</a></li>
-              <li><a href="#">Accreditation</a></li>
-            </ul>
-          </div>
-          <div className="footer-links-column">
-            <h4 className="footer-links-title">Academics</h4>
-            <ul className="footer-links-list">
-              <li><a href="#">Programs</a></li>
-              <li><a href="#">Course Catalog</a></li>
-              <li><a href="#">Research</a></li>
-              <li><a href="#">Libraries</a></li>
-            </ul>
-          </div>
-          <div className="footer-links-column">
-            <h4 className="footer-links-title">Campus Life</h4>
-            <ul className="footer-links-list">
-              <li><a href="#">Student Organizations</a></li>
-              <li><a href="#">Athletics</a></li>
-              <li><a href="#">Housing</a></li>
-              <li><a href="#">Dining</a></li>
-            </ul>
-          </div>
-          <div className="footer-links-column">
-            <h4 className="footer-links-title">Support</h4>
-            <ul className="footer-links-list">
-              <li><a href="#">Admissions</a></li>
-              <li><a href="#">Financial Aid</a></li>
-              <li><a href="#">Career Services</a></li>
-              <li><a href="#">Alumni Relations</a></li>
-            </ul>
-          </div>
+        <div className="footer-right">
+          <nav className="footer-nav">
+            <a href="#plans">About Us</a>
+            <a href="#features">Highlights</a>
+            <a href="#news">Latest News</a>
+            <a href="#careers">Curriculum</a>
+          </nav>
         </div>
       </div>
-      <div className="footer-copyright">
-        <p>&copy; 2023 College University. All rights reserved.</p>
+      <div className="footer-bottom">
+        <div className="footer-social">
+          <a href="#" aria-label="YouTube"><FaYoutube /></a>
+          <a href="#" aria-label="Facebook"><FaFacebookF /></a>
+          <a href="#" aria-label="Twitter"><FaTwitter /></a>
+          <a href="#" aria-label="GitHub"><FaGithub /></a>
+        </div>
+        <div className="footer-copyright">
+          © 2023 Department of MCA. All rights reserved.
+        </div>
+        <div className="footer-legal">
+          <a href="#terms">Terms of Service</a>
+        </div>
       </div>
     </footer>
   );

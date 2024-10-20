@@ -62,7 +62,8 @@ const Placements = () => {
   };
 
   return (
-    <div className="placement-display">
+    <div className="placemets">
+      <h2 className="title">Our Placement Speaks</h2>
       {/* <div className="top-section">
         <div className="nav-buttons">
           <button 
