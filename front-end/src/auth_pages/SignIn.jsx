@@ -8,8 +8,7 @@ import logo from '../assets/logo.png';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import ErrorIcon from '@mui/icons-material/Error';
-
-
+import axios from 'axios';
 
 
 const SignIn = () => {
@@ -17,14 +16,11 @@ const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [apiError, setApiError] = useState(null);
-
+  
   const navigate = useNavigate(); // Initialize useNavigate
-
   const password = watch("password");
 
-  // const API_ENDPOINT = 'http://192.168.72.250:3000/signin'; 
-  const API_ENDPOINT = 'http://192.168.1.6:3000/signin'; 
-
+  // Function to handle form submission
   const onSubmit = async (data) => {
     setIsLoading(true);
     setApiError(null);
@@ -35,32 +31,29 @@ const SignIn = () => {
     };
 
     try {
-      const response = await fetch(API_ENDPOINT, {
-        method: 'POST',
+      const response = await axios.post('http://localhost:3000/signin', userData, {
+        withCredentials: true, // This ensures cookies (sessions) are sent along with the request
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
+        }
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+      const result = response.data; // Extracting the data from the axios response
 
-      const result = await response.json();
       console.log('API Response:', result);
+
+      // Check the response status and handle accordingly
+      if(result.response.status === 'success' ){
+        if(result.response.userType==='admin'){
+          navigate('/admin');
+        }
+         // Redirect to profile on successful login
+      } else if(result.response === 'passwordIncorrect'){
+        alert('Password incorrect');
+      } else if(result.response === 'userNotExist'){
+        alert('User does not exist');
+      } 
       
-      
-      if(result.response.status=='success'){
-        navigate('/profile');
-      }
-      if(result.response.status=='passwordIncorrect'){
-        alert('Password incorrect')
-      }
-      
-      if(result.response.status=='userNotExist'){
-        alert('User Not Exist')
-      }
       
     } catch (error) {
       console.error('Error:', error);
@@ -100,10 +93,6 @@ const SignIn = () => {
               className={errors.email ? 'error' : ''}
               {...register("email", {
                 required: "Email is required",
-                // pattern: {
-                //   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                //   message: "Invalid email address"
-                // }
               })}
             />
             {errors.email && <span className="error-message"><ErrorIcon className='icon'/>{errors.email.message}</span>}
@@ -144,7 +133,7 @@ const SignIn = () => {
 
         </form>
         <p className="sign-up-link">
-          Don't have an account? <Link to="/sign-up" className="">Sign Up</Link>
+          Don't have an account? <Link to="/sign-up" className="">Sign in</Link>
         </p>
       </div>
     </div>
