@@ -1,11 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
+const fileUpload = require('express-fileupload');
 const usersRouter = require('./routes/indexRoutes'); // Ensure you have defined routes properly
 const db = require('./config/connection'); // Database configuration
-
 const app = express();
 const port = 3000;
+
+// Built-in middleware for parsing JSON and URL-encoded data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// File upload middleware
+app.use(fileUpload({createParentPath: true}));
 
 // Database connection
 db.connect((err) => {
@@ -26,12 +33,9 @@ app.use(session({
 
 // Enable CORS for your frontend (adjust URL if needed)
 app.use(cors({
-  origin: 'http://localhost:5173', // Frontend URL
+  origin: '*', // Frontend URL
   credentials: true
 }));
-
-// Body-parser for parsing request bodies
-app.use(express.json()); // Using express built-in JSON parser
 
 // Use your routes
 app.use('/', usersRouter);

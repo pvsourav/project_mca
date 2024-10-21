@@ -15,8 +15,8 @@ module.exports = {
                 userData.createdAt = new Date(); // Set current date and time
                 userData.lastLogin = null; // Initialize lastLogin to null
     
-                db.get().collection(collection.USER_COLLECTION).insertOne(userData).then(() => {
-                    resolve({ signedupStatus: true ,userType:userData.userType});
+                db.get().collection(collection.USER_COLLECTION).insertOne(userData).then((response) => { 
+                    resolve({ userid:response.insertedId,signedupStatus: true ,userType:userData.userType});
                 }).catch((err) => {
                     console.error(err);
                     reject({ signupError: true });
