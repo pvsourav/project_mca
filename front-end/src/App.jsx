@@ -8,7 +8,6 @@ import UserDetails from './auth_pages/UserDetails';
 import SignUp from './auth_pages/SignUp';
 import AdminDashboard from './Dasboard/AdminDashboard';
 import UserProfile from './Dasboard/pages/UserProfile';
-import Details from './auth_pages/Details';
 
 const App = () => {
   return (
@@ -21,10 +20,10 @@ const App = () => {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/details" element={<UserDetails />} />
           <Route path="/admin/*" element={<AdminDashboard />} />
+          <Route path="/details" element={<UserDetails />} />
         </Routes>
       </div>
     </Router>
-    // <Details/>
   );
 };
 
