@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './header.scss';
 import logo from '../assets/logo.png'
 
@@ -22,7 +22,8 @@ const Header = () => {
             <li className="header__nav-item"><NavLink to="/services">Services</NavLink></li>
           </ul>
         </nav>
-        <NavLink to="/sign-in" className="header__cta">Sign in</NavLink>
+        {/* <NavLink to="/sign-in" className="header__cta">Sign in</NavLink> */}
+        <Link to="/sign-in" className="header__cta"></Link>
         <button className="header__menu-toggle" onClick={toggleMenu}>
           <span className="header__menu-icon"></span>
         </button>

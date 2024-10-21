@@ -1,0 +1,115 @@
+.container {
+    background-color: transparent;
+  }
+  
+  .section{
+    background-color: #ffffff;
+    border: 1px solid #E8EAEE;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    .top-title{
+      background-color: #f3f4f6;
+      padding: 15px 60px;
+
+      h2{
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+
+    .info-content{
+      padding: 60px;
+      display: flex;
+      gap: 10%;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .display-picture {
+        // background-color: aqua;
+        display: flex;
+        align-content: center;
+        gap: 30px;
+        margin-right: 20px;
+    
+        .avatar {
+          width: 96px;
+          height: 96px;
+          background-color: #1a73e8;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 24px;
+          font-weight: bold;
+          object-fit: fill;
+          overflow: hidden;
+
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+
+        .org-logo{
+          background-color: #1a73e8;
+          object-fit: fill;
+          width: 64px;
+          height: 64px;
+          border-radius: 10px;
+      
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+    
+        .title{
+          // background-color: antiquewhite;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 10px;
+          white-space: nowrap;
+        }
+
+        .sub{
+          color: #929292;
+        }
+      }
+    
+      .details-wrapper{
+        // background-color: #202124;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 15px;
+        white-space: nowrap;
+
+        .field{
+          font-weight: 600;
+        }
+
+        .value{
+          color: #929292;
+        }
+
+        .details{
+          // background-color: blueviolet;
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+          flex-wrap: nowrap;
+        }
+      }
+    }
+  }
+
+  
+  
+  
+  

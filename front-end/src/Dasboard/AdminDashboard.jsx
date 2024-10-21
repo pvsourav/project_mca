@@ -6,6 +6,8 @@ import user from '../assets/tkm.png';
 import SideBar from '../components/SideBar';
 import ProfileDisplay from './pages/ProfileDisplay';
 import ContentManagement from './pages/ContentManagement';
+import Users from './pages/Users';
+import UserProfile from './pages/UserProfile';
 
 // Helper function to format path for breadcrumb and h1
 const formatPath = (path) => {
@@ -57,7 +59,9 @@ const AdminDashboard = () => {
           <Routes>
             <Route index element={<Navigate to="alumni" replace />} />
             <Route path="alumni" element={<ProfileDisplay />} />
+            <Route path="alumni/userprofile" element={<UserProfile />} />
             <Route path="cms" element={<ContentManagement />} />
+            <Route path="users" element={<Users/>} />
           </Routes>
         </main>
       </div>

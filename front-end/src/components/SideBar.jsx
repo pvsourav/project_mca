@@ -18,7 +18,7 @@ const SideBar = () => {
   const location = useLocation();
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar-container">
       <div className="sidebar-header">
         <div className="logo">
           <div className="logo-icon">

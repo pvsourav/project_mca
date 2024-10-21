@@ -1,14 +1,13 @@
 import React from 'react'
-import CmsTemplate from '../../components/CmsTemplate'
 import './contentmanagement.scss'
+import PlacementCms from '../../components/PlacementCms'
+import NewsCms from '../../components/NewsCms'
 
 const ContentManagement = () => {
   return (
     <div className='cms-container'>
-        <CmsTemplate/>
-        <CmsTemplate/>
-        <CmsTemplate/>
-        <CmsTemplate/>
+        <PlacementCms/>
+        <NewsCms/>
     </div>
   )
 }

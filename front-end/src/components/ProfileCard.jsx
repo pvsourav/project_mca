@@ -1,8 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MapPin, Briefcase, User, MessageSquare, BadgeCheck } from 'lucide-react';
 import './profilecard.scss';
 
-const ProfileCard = ({ name, batch, company, location, profilePic }) => {
+const ProfileCard = ({ id, name, batch, company, location, profilePic, email, phoneNumber, role, dateJoined }) => {
+  const userData = {
+    id,
+    name,
+    batch,
+    company,
+    location,
+    profilePic,
+    email,
+    phoneNumber,
+    role,
+    dateJoined
+  };
+  
+
   return (
     <div className="profile-card">
       <div className="profile-header">
@@ -11,10 +26,10 @@ const ProfileCard = ({ name, batch, company, location, profilePic }) => {
         </div>
         <div className="profile-info">
           <span className="batch-badge">Batch: {batch}</span>
-          <h2 className="profile-name">
-            {name}
+          <div className="name-wrapper">
+            <div className='profile-name'>{name}</div>
             <BadgeCheck className="badge-icon" size={20} />
-          </h2>
+          </div>
           <div className="profile-details">
             <div className="detail-item">
               <Briefcase size={16} className="detail-icon" />
@@ -28,10 +43,14 @@ const ProfileCard = ({ name, batch, company, location, profilePic }) => {
         </div>
       </div>
       <div className="profile-actions">
-        <button className="action-button view-profile">
+        <Link 
+          to="/admin/alumni/userprofile" 
+          state={{ userData }}
+          className="action-button view-profile"
+        >
           <User size={16} className="button-icon" />
           View Profile
-        </button>
+        </Link>
         <button className="action-button send-message">
           <MessageSquare size={16} className="button-icon" />
           Message

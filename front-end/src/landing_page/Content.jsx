@@ -32,17 +32,22 @@ const Content = () => {
       },
       { rootMargin: '0px', threshold: 0.5 }
     );
-
+  
     cardsRef.current.forEach((card) => {
-      observer.observe(card);
+      if (card) {
+        observer.observe(card);
+      }
     });
-
+  
     return () => {
       cardsRef.current.forEach((card) => {
-        observer.unobserve(card);
+        if (card) {  // Check if card is a valid element
+          observer.unobserve(card);
+        }
       });
     };
   }, []);
+  
 
   const cards = [
     { title: "Web Development", description: "Learn to build modern web applications", icon: <LanguageIcon/> },
