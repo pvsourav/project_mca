@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Briefcase, User, MessageSquare, BadgeCheck } from 'lucide-react';
+import MessageBox from './MessageBox';
 import './profilecard.scss';
 
 const ProfileCard = ({ id, name, batch, company, location, profilePic, email, phoneNumber, role, dateJoined }) => {
+  const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(false);
+
+  const toggleMessageBox = () => {
+    setIsMessageBoxOpen(!isMessageBoxOpen);
+    // Prevent scrolling on the body when the overlay is active
+    document.body.style.overflow = isMessageBoxOpen ? 'auto' : 'hidden';
+  };
+
   const userData = {
     id,
     name,
@@ -16,7 +25,6 @@ const ProfileCard = ({ id, name, batch, company, location, profilePic, email, ph
     role,
     dateJoined
   };
-  
 
   return (
     <div className="profile-card">
@@ -51,11 +59,23 @@ const ProfileCard = ({ id, name, batch, company, location, profilePic, email, ph
           <User size={16} className="button-icon" />
           View Profile
         </Link>
-        <button className="action-button send-message">
+        <button 
+          className="action-button send-message"
+          onClick={toggleMessageBox}
+        >
           <MessageSquare size={16} className="button-icon" />
           Message
         </button>
       </div>
+
+      {isMessageBoxOpen && (
+        <>
+          <div className="overlay" onClick={toggleMessageBox}></div>
+          <div className="popover-container">
+            <MessageBox toggleMessageBox={toggleMessageBox} recipientName={name} profilePic={profilePic}/>
+          </div>
+        </>
+      )}
     </div>
   );
 };

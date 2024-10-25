@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Camera, User, Mail, Phone, Building, MapPin, Briefcase, Calendar, Upload, SkipForward, Send, Globe, CalendarHeart } from "lucide-react";
+import axios from 'axios';
+import { Camera, User, Mail, Phone, Building, MapPin, Briefcase, Calendar, Upload, SkipForward, Send, Globe } from "lucide-react";
 import './userdetails.scss';
 import avatar from '../assets/emoji.png';
 import upload from '../assets/upload.png';
@@ -8,9 +9,9 @@ import logo from '../assets/logo.png';
 
 const UserDetails = () => {
   const currentYear = new Date().getFullYear();
-  const years = Array.from({length: currentYear - 1949}, (_, i) => currentYear - i);
+  const years = Array.from({ length: currentYear - 1949 }, (_, i) => currentYear - i);
   const fileInputRef = useRef(null);
-
+  const name = "sourav";
   const [formData, setFormData] = useState({
     name: "",
     batchFrom: "",
@@ -27,15 +28,44 @@ const UserDetails = () => {
 
   const [profilePicture, setProfilePicture] = useState(null);
   const [fileName, setFileName] = useState("profile picture");
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    console.log("Profile Picture:", profilePicture);
+
+    // Prepare form data for submission
+    const formDataWithFile = new FormData();
+    for (const key in formData) {
+      formDataWithFile.append(key, formData[key]);
+    }
+    if (profilePicture) {
+      formDataWithFile.append('profilePicture', profilePicture);
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3000/alumnicompleteprofile', formDataWithFile, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      console.log('Data submitted successfully:', response.data);
+      setSuccess("Profile submitted successfully!"); 
+    } catch (error) {
+      // Handle error response
+      if (error.response) {
+        console.log("Error response:", error.response.data);
+        setError("An error occurred: " + error.response.data.message || error.response.data);
+      } else {
+        console.log("Error message:", error.message);
+        setError("An error occurred: " + error.message);
+      }
+    }
   };
 
   const handleFileUpload = (e) => {
@@ -80,20 +110,19 @@ const UserDetails = () => {
   return (
     <div className="profile-form">
       <div className="form-container">
-      <div className="banner">
-        hii
-        <img src={tkmimg} alt="" />
-        <span className="overlay"></span>
-        <div className="tkm">
-          <img src={logo} alt="" />
-          <h1 className="tkm_title">TKM College of Engineering, Kollam</h1>
+        <div className="banner">
+          <img src={tkmimg} alt="" />
+          <span className="overlay"></span>
+          <div className="tkm">
+            <img src={logo} alt="" />
+            <h1 className="tkm_title">TKM College of Engineering, Kollam</h1>
+          </div>
+          <div className="title_wrapper">
+            <h1 className="title">Department of</h1>
+            <h1 className="title">Computer</h1>
+            <h1 className="title">Applications</h1>
+          </div>
         </div>
-        <div className="title_wrapper">
-          <h1 className="title">Department of</h1>
-          <h1 className="title">Computer</h1>
-          <h1 className="title">Applications</h1>
-        </div>
-      </div>
         <div className="form-content">
           <form onSubmit={handleSubmit}>
             <div className="file-upload-container" onClick={triggerFileInput}>
@@ -113,6 +142,7 @@ const UserDetails = () => {
                 ref={fileInputRef}
                 onChange={handleFileUpload}
                 accept="image/*" 
+                style={{ display: 'none' }} // Hide the file input
               />
             </div>
 
@@ -199,7 +229,7 @@ const UserDetails = () => {
               <div className="info-section">
                 <h3>Organisation info</h3>
                 <div className="fields-wrapper">
-                <div className="form-group">
+                  <div className="form-group">
                     <label htmlFor="workType">Work Type</label>
                     <div className="input-wrapper">
                       <Briefcase />
@@ -218,7 +248,6 @@ const UserDetails = () => {
                       </select>
                     </div>
                   </div>
-                  
                   <div className="form-group">
                     <label htmlFor="organisation">Organisation</label>
                     <div className="input-wrapper">
@@ -233,26 +262,22 @@ const UserDetails = () => {
                       />
                     </div>
                   </div>
-                  
                   <div className="form-group">
-                  <label htmlFor="dateJoined">Year Joined</label>
-                  <div className="input-wrapper">
-                    <Calendar />
-                    <input
-                      type="number"
-                      id="dateJoined"
-                      name="dateJoined"
-                      value={formData.dateJoined}
-                      onChange={handleChange}
-                      min="1900" // You can set this to a reasonable minimum year
-                      max={new Date().getFullYear()} // Ensure the year is not more than the current year
-                      placeholder="YYYY"
-                    />
+                    <label htmlFor="dateJoined">Year Joined</label>
+                    <div className="input-wrapper">
+                      <Calendar />
+                      <input
+                        type="number"
+                        id="dateJoined"
+                        name="dateJoined"
+                        value={formData.dateJoined}
+                        onChange={handleChange}
+                        min="1900"
+                        max={new Date().getFullYear()}
+                        placeholder="YYYY"
+                      />
+                    </div>
                   </div>
-                </div>
-
-
-
                   <div className="form-group">
                     <label htmlFor="role">Role</label>
                     <div className="input-wrapper">
@@ -267,24 +292,14 @@ const UserDetails = () => {
                       />
                     </div>
                   </div>
+                </div>
+              </div>
 
+              <div className="info-section">
+                <h3>Location info</h3>
+                <div className="fields-wrapper">
                   <div className="form-group">
-                    <label htmlFor="location">Working place</label>
-                    <div className="input-wrapper">
-                      <MapPin />
-                      <input
-                        type="text"
-                        id="location"
-                        name="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                        placeholder=""
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="country">Working country</label>
+                    <label htmlFor="country">Country</label>
                     <div className="input-wrapper">
                       <Globe />
                       <select
@@ -302,10 +317,23 @@ const UserDetails = () => {
                       </select>
                     </div>
                   </div>
+                  <div className="form-group">
+                    <label htmlFor="location">Location</label>
+                    <div className="input-wrapper">
+                      <MapPin />
+                      <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        value={formData.location}
+                        onChange={handleChange}
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div> 
+              </div>
             </div>
-
             <div className="button-group">
             <button type="button" className="skip">
               <SkipForward size={18} />
@@ -317,6 +345,9 @@ const UserDetails = () => {
             </button>
             </div>
           </form>
+          
+          {/* {error && <div className="error-message">{error}</div>}
+          {success && <div className="success-message">{success}</div>} */}
         </div>
       </div>
     </div>

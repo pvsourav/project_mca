@@ -1,0 +1,208 @@
+// EmailComposer.scss
+.email-composer {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  
+    // Header styles
+    .composer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e5e7eb;
+  
+      .sender-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+  
+        .avatar {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          overflow: hidden;
+  
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+  
+        .recipient-name {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          
+          span {
+            font-size: 14px;
+            font-weight: 500;
+          }
+        }
+      }
+  
+      .window-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+  
+    // Subject styles
+    .composer-subject {
+      padding: 8px 16px;
+      border-bottom: 1px solid #e5e7eb;
+  
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 16px;
+  
+        &::placeholder {
+          color: #9ca3af;
+        }
+      }
+    }
+  
+    // Content styles
+    .composer-content {
+      padding: 12px 16px;
+      min-height: 200px;
+  
+      .recipient {
+        margin-bottom: 16px;
+        font-size: 14px;
+  
+        .mention {
+          color: #2563eb;
+          font-weight: 500;
+        }
+      }
+  
+      textarea {
+        width: 100%;
+        min-height: 200px;
+        border: none;
+        outline: none;
+        resize: none;
+        font-size: 14px;
+        line-height: 1.5;
+  
+        &::placeholder {
+          color: #9ca3af;
+        }
+      }
+  
+      .attachment-preview {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background-color: #f9fafb;
+        padding: 8px;
+        border-radius: 4px;
+  
+        img {
+          width: 20px;
+          height: 20px;
+        }
+  
+        .filename {
+          font-size: 14px;
+          color: #4b5563;
+        }
+  
+        .filesize {
+          font-size: 12px;
+          color: #9ca3af;
+        }
+      }
+    }
+  
+    // Footer styles
+    .composer-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-top: 1px solid #e5e7eb;
+      background-color: #f9fafb;
+  
+      .left-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+  
+      .right-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+  
+        .formatting-tools {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          padding-right: 8px;
+          border-right: 1px solid #e5e7eb;
+        }
+      }
+    }
+  
+    // Common button styles
+    .control-btn {
+      padding: 8px;
+      border-radius: 4px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+  
+      &:hover {
+        background-color: #e5e7eb;
+      }
+  
+      .icon {
+        width: 20px;
+        height: 20px;
+        color: #4b5563;
+      }
+    }
+  
+    .send-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background-color: #000000;
+      color: white;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+  
+      &:hover {
+        background-color: #1f2937;
+      }
+  
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+  
+      span {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
