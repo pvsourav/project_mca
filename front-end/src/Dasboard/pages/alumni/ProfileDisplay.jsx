@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Search, FileText, Users, Calendar, MapPin } from 'lucide-react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ProfileCard from '../../components/ProfileCard';
+import ProfileCard from '../../../components/ProfileCard';
 import './profiledisplay.scss';
-import dp from '../../assets/tkm3.jpeg';
 
 const profiles = [
   {

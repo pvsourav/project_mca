@@ -7,7 +7,6 @@ import SignIn from './auth_pages/SignIn';
 import UserDetails from './auth_pages/UserDetails';
 import SignUp from './auth_pages/SignUp';
 import AdminDashboard from './Dasboard/AdminDashboard';
-import UserProfile from './Dasboard/pages/UserProfile';
 
 const App = () => {
   return (

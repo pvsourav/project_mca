@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './userprofile.scss';
-import org_logo from '../../assets/organisation_logo.png'
+import org_logo from '../../../assets/organisation_logo.png'
 
 const UserProfile = () => {
   const location = useLocation();

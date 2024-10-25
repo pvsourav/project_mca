@@ -4,10 +4,11 @@ import { Bell, Settings, ChevronDown, ChevronRight } from 'lucide-react';
 import './admindashboard.scss';
 import user from '../assets/tkm.png';
 import SideBar from '../components/SideBar';
-import ProfileDisplay from './pages/ProfileDisplay';
-import ContentManagement from './pages/ContentManagement';
-import Users from './pages/Users';
-import UserProfile from './pages/UserProfile';
+import ProfileDisplay from './pages/alumni/ProfileDisplay';
+import ContentManagement from './pages/cms/ContentManagement';
+import Users from './pages/users/Users';
+import UserProfile from './pages/alumni/UserProfile';
+import NewsForm from './pages/cms/NewsForm';
 
 // Helper function to format path for breadcrumb and h1
 const formatPath = (path) => {
@@ -61,6 +62,7 @@ const AdminDashboard = () => {
             <Route path="alumni" element={<ProfileDisplay />} />
             <Route path="alumni/userprofile" element={<UserProfile />} />
             <Route path="cms" element={<ContentManagement />} />
+            <Route path="cms/addnews" element={<NewsForm/>} />
             <Route path="users" element={<Users/>} />
           </Routes>
         </main>
