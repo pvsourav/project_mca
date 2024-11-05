@@ -5,10 +5,10 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-color: #9ca3af;
 
   .form-container {
-    background-color: #ffffff
+    max-height: calc(100vh - 2rem);
+    max-width: calc(100% - 2rem)
 ;
     border-radius: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -77,13 +77,17 @@
   
     .form-content {
       padding: 4rem;
-      width: 640px;
+      // background-color: bisque;
   
   
       form {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         gap: 1.5rem;
+        // background-color: #cecece;
+        width: 100%;
+        height: 100%;
 
         // FileUploadComponent.scss
         .file-upload-container {
@@ -135,7 +139,7 @@
           
   
           .info-section{
-            margin-top: 30px;
+            // margin-top: 30px;
   
   
             h3{

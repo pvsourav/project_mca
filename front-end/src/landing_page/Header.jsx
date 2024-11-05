@@ -23,7 +23,7 @@ const Header = () => {
           </ul>
         </nav>
         {/* <NavLink to="/sign-in" className="header__cta">Sign in</NavLink> */}
-        <Link to="/sign-in" className="header__cta"></Link>
+        <Link to="/sign-in" className="header__cta">Sign In</Link>
         <button className="header__menu-toggle" onClick={toggleMenu}>
           <span className="header__menu-icon"></span>
         </button>

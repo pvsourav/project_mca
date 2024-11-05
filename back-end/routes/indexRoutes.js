@@ -53,6 +53,7 @@ router.get("/alumnidetails", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 router.post("/alumnicompleteprofile", function (req, res) {
   console.log(req.body); 
   console.log(req.files); 
@@ -72,6 +73,32 @@ router.post("/alumnicompleteprofile", function (req, res) {
       res.status(400).json({ error: "No image uploaded" });
     }
   });
+=======
+router.post('/alumnicompleteprofile', function (req, res) {
+  console.log(req.body);  // This should log form fields
+  console.log(req.files); // This should log uploaded files
+
+  // Ensure userId is added to the request body
+  // req.body.userId = req.session.userId;
+
+  // // Complete profile and save data to the database
+  // alumniHelper.alumnicompleteprofile(req.body, (id) => {
+  //   if (req.files && req.files.image) {
+  //     let image = req.files.image;
+  //     let imagePath = `./storage/alumni/profilepictures/${id}.jpg`;
+
+  //     // Save the image to the specified path
+  //     image.mv(imagePath, (err) => {
+  //       if (err) {
+  //         return res.status(500).json({ error: 'Image upload failed' });
+  //       }
+  //       res.json({ message: 'Profile completed successfully' });
+  //     });
+  //   } else {
+  //     res.status(400).json({ error: 'No image uploaded' });
+  //   }
+  // });
+>>>>>>> e9886895d1891487ffc984061121d77146193f3d
 });
 
 module.exports = router;

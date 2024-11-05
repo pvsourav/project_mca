@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUpCircle, PlusCircle, ArrowDownCircle, ChevronLeft, ChevronRight, Clock } from 'lucide-react';
 import './newscms.scss';
 
@@ -70,15 +71,20 @@ const NewsCms = () => {
     <div className="news-display">
       <div className="top-section">
         <div className="action-buttons">
-          <button className="primary">
+
+          <Link to="/admin/cms/addnews" className="action-button-primary"><PlusCircle size={20} />Add News</Link>
+
+          <button className="action-button">
             <ArrowUpCircle size={20} />
             Share
           </button>
-          <button className="secondary">
+        
+          {/* <button className="secondary">
             <PlusCircle size={20} />
             Add News
-          </button>
-          <button className="secondary">
+          </button> */}
+
+          <button className="action-button">
             <ArrowDownCircle size={20} />
             Edit
           </button>
