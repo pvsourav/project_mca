@@ -16,7 +16,7 @@ module.exports = {
                 userData.lastLogin = null; // Initialize lastLogin to null
     
                 db.get().collection(collection.USER_COLLECTION).insertOne(userData).then((response) => { 
-                    resolve({ userid:response.insertedId,signedupStatus: true ,userType:userData.userType});
+                    resolve({ userid:response.insertedId,signedupStatus:  true ,email:userData.email,userType:userData.userType});
                 }).catch((err) => {
                     console.error(err);
                     reject({ signupError: true });
