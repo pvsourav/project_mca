@@ -1,0 +1,56 @@
+.job-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .job-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .job-title span {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .company-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .job-details {
+    margin-top: 10px;
+  }
+  
+  .company-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .job-info {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .job-info div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .job-info div i {
+    margin-right: 5px;
+  }
+  
+  .apply-button {
+    background-color: #f05a28;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }

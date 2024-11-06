@@ -23,20 +23,20 @@ const EditRoleForm = () => {
   return (
     <div className="news-form-container">
       <div className="form-header">
-        <h3>Edit Role Details</h3>
+        <h3>Enter news details</h3>
       </div>
 
       <form onSubmit={handleSubmit}>
         <div className="form-section">
 
           <div className="form-info-text">
-            <label>Role Info</label>
-            <p>This will be displayed on your profile</p>
+            <label>News Info</label>
+            <p>This will be displayed on your page</p>
           </div>
 
           <div className="fields-wrapper">
             <div className="form-field">
-                <label>Role Name</label>
+                <label>News Title</label>
                 <input
                 type="text"
                 value={formData.roleName}
@@ -45,15 +45,12 @@ const EditRoleForm = () => {
             </div>
 
             <div className="form-field">
-                <label>Select Role Category</label>
-                <select
-                value={formData.roleCategory}
-                onChange={(e) => handleInputChange('roleCategory', e.target.value)}
-                >
-                <option value="DFI">DFI</option>
-                <option value="Medical">Medical</option>
-                <option value="Administrative">Administrative</option>
-                </select>
+                <label>News Date</label>
+                <input
+                    type="date"
+                    value={formData.roleDescription}
+                    onChange={(e) => handleInputChange('roleDescription', e.target.value)}
+                />
             </div>
 
             <div className="form-field">
@@ -68,7 +65,7 @@ const EditRoleForm = () => {
 
           <div className="toggle-text">
               <h3>Visibility</h3>
-              <p>Lorem ipsum dolor sit amet</p>
+              <p>This will be displayed on the landing page</p>
           </div>
 
           <div className="toggle-switch-wrapper">
