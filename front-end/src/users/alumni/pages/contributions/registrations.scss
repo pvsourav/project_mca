@@ -1,0 +1,53 @@
+// registration-table.scss
+
+.registration-table-container {
+    padding: 0px;
+  }
+  
+  .registration-table-title {
+    margin-bottom: 20px;
+  }
+  
+  .registration-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #E8EAEE;
+  }
+  
+  .registration-table-header {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 16px;
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .registration-table-cell {
+    padding: 12px 16px;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    background-color: #ffffff;
+  }
+  
+  .registration-table-cell:last-child {
+    border-right: none;
+  }
+  
+  .registration-table-row:last-child .registration-table-cell {
+    border-bottom: none;
+  }
+  
+//   .registration-table-row:nth-child(even) {
+//     background-color: #f8f8f8;
+//   }
+  
+//   .registration-table-row:hover {
+//     background-color: #f0f0f0;
+//   }
+  
+  .registration-table-cell:first-child {
+    border-left: none;
+  }

@@ -1,7 +1,7 @@
 import React from 'react'
 import './contentmanagement.scss'
-import PlacementCms from '../../../components/PlacementCms'
-import NewsCms from '../../../components/NewsCms'
+import PlacementCms from '../../../admin/pages/cms/PlacementCms'
+import NewsCms from '../../../admin/pages/cms/NewsCms'
 
 const ContentManagement = () => {
   return (

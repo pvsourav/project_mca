@@ -11,7 +11,7 @@ const ContentCard = ({ content }) => {
     <div className="content-card">
       <div className="content-card__header">
         <div className="content-card__profile">
-          <img src={owner.profilePhoto} alt="Profile" className="content-card__profile-photo" />
+          <p>Posted by :</p>
           <h3 className="content-card__name">{owner.name}</h3>
         </div>
       </div>

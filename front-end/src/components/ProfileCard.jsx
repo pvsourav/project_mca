@@ -52,7 +52,7 @@ const ProfileCard = ({ id, name, batch, company, location, profilePic, email, ph
       </div>
       <div className="profile-actions">
         <Link 
-          to="/admin/alumni/userprofile" 
+          to="/alumni/my-batch/userprofile" 
           state={{ userData }}
           className="action-button view-profile"
         >

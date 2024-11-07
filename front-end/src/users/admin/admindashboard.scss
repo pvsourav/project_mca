@@ -171,14 +171,14 @@
             }
           }
         
-          .chat-list {
+          .message-list {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
             height: 100%;
             overflow: auto;
         
-            .chat-item {
+            .message-item {
               display: flex;
               padding: 1rem;
               gap: 1rem;
@@ -190,41 +190,41 @@
                 background-color: #F3F4F6;
               }
         
-              .chat-avatar {
+              .message-avatar {
                 width: 2.5rem;
                 height: 2.5rem;
                 border-radius: 9999px;
                 object-fit: cover;
               }
         
-              .chat-content {
+              .message-content {
                 flex: 1;
                 min-width: 0;
         
-                .chat-top {
+                .message-top {
                   display: flex;
                   justify-content: space-between;
                   align-items: center;
                   margin-bottom: 0.25rem;
         
-                  .chat-name {
+                  .message-name {
                     font-weight: 600;
                     color: #111827;
                   }
         
-                  .chat-time {
+                  .message-time {
                     font-size: 0.75rem;
                     color: #6B7280;
                   }
                 }
         
-                .chat-bottom {
+                .message-bottom {
                   display: flex;
                   justify-content: space-between;
                   align-items: center;
                   gap: 0.5rem;
         
-                  .chat-message {
+                  .message-message {
                     color: #6B7280;
                     font-size: 0.875rem;
                     margin: 0;

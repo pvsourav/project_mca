@@ -17,7 +17,12 @@
 
   &__profile {
     display: flex;
+    gap: 5px;
     align-items: center;
+
+    p{
+      color: #949494;
+    }
   }
 
   &__profile-photo {
