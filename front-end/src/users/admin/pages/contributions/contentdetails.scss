@@ -1,0 +1,78 @@
+.content-details {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 32px;
+  
+    &__title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+  
+    &__description {
+      color: #4a5568;
+      margin-bottom: 16px;
+    }
+  
+    &__owner {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+  
+      &-photo {
+        flex-shrink: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 16px;
+  
+        img {
+          width: 48px;
+          height: 48px;
+          object-fit: cover;
+        }
+      }
+  
+      &-name {
+        color: #718096;
+        font-weight: medium;
+      }
+    }
+  
+    &__type {
+      color: #718096;
+      margin-bottom: 16px;
+    }
+  
+    &__registrations {
+      margin-top: 24px;
+  
+      &-item {
+        background-color: #f7fafc;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+  
+        &-name {
+          font-weight: medium;
+        }
+  
+        &-email, &-phone {
+          color: #718096;
+        }
+      }
+    }
+  }
+  
+  .content-not-available {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  
+    p {
+      color: #a0aec0;
+      font-size: 18px;
+    }
+  }

@@ -1,7 +1,9 @@
 .sidebar-container{
-    width: 280px;
-    background-color: white;
+    min-width: 279px;
+    background-color: rgb(255, 255, 255);
     border-right: 1px solid #E8EAEE;
+    height: 100%;
+    overflow: hidden;
 
     .sidebar-header {
       height: 90px;
