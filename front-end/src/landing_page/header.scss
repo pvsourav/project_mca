@@ -83,12 +83,12 @@
           left: 0;
           width: 0;
           height: 2px;
-          background-color: #69dd09;
+          background-color:#4F46E5;
           transition: width 0.3s ease;
         }
 
         &:hover {
-          color: #69dd09;
+          color:#4F46E5;
 
           &::after {
             width: 100%;
@@ -99,8 +99,9 @@
   }
 
   &__cta {
+    text-decoration: none;
     margin-left: auto;
-    background-color: #69dd09;
+    background-color:#4F46E5;
     color: #ffffff;
     border: none;
     padding: 0.7rem 1.2rem;
@@ -111,7 +112,7 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 
     &:hover {
-      background-color: #5fc608;
+      background-color: #625bee;
       transform: translateY(-2px);
     }
 

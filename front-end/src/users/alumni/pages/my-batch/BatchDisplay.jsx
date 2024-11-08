@@ -12,7 +12,7 @@ const BatchDisplay = () => {
   
 
   useEffect(() => {
-    axios.get('http://192.168.29.250:3000/alumnidetails', 
+    axios.get('http://localhost:3000/alumnidetails', 
       { withCredentials: true })
       .then(res => {
         console.log('Fetched alumni data:', res.data); // Log the response for debugging

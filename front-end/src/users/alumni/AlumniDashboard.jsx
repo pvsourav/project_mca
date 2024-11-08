@@ -36,26 +36,26 @@ const AlumniDashboard = () => {
   const [isMessagesVisible, setIsMessagesVisible] = useState(false);
   const pathSegments = location.pathname.split('/').filter((segment) => segment);
   const currentRoute = pathSegments[pathSegments.length - 1];
-  // const [userData, setUserData] = useState('');
-  const userData = userInstance();
+  const [userData, setUserData] = useState('');
+  // const userData = userInstance();
 
-  // useEffect(() => {
-  //   // Fetch profile data on component mount
-  //   const fetchProfileData = async () => {
-  //     try {
-  //       const response = await axios.get('http://192.168.29.250:3000/profile', {
-  //         withCredentials: true,
-  //       });
+  useEffect(() => {
+    // Fetch profile data on component mount
+    const fetchProfileData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/profile', {
+          withCredentials: true,
+        });
 
-  //       setUserData(response.data[0]);      
+        setUserData(response.data[0]);      
   
-  //     } catch (error) {
-  //       console.error('Error fetching profile data:', error);
-  //     }
-  //   };
+      } catch (error) {
+        console.error('Error fetching profile data:', error);
+      }
+    };
   
-  //   fetchProfileData();
-  // }, []);
+    fetchProfileData();
+  }, []);
   
 
   const toggleMessages = () => {

@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const response = await axios.get('http://192.168.29.250:3000/profile', {
+        const response = await axios.get('http://localhost:3000/profile', {
           withCredentials: true,
         });
         setUserData(response.data[0]);

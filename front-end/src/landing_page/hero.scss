@@ -107,15 +107,15 @@
     text-align: left;
 
     .hero:hover & {
-      color: lighten(#69dd09, 10%);
+      // color: lighten(#4F46E5, 10%);
     }
 
     &-highlight {
-      color: #69dd09;
+      color: #4F46E5;
       transition: color 0.3s ease;
 
       .hero:hover & {
-        color: lighten(#69dd09, 15%);
+        color: lighten(#4F46E5, 15%);
       }
     }
   }
@@ -152,16 +152,17 @@
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
+    
     letter-spacing: 1px;
 
     &--primary {
-      background-color: #69dd09;
-      color: #000000;
-      border: none;
+      background-color: #4F46E5;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      
 
       &:hover {
-        background-color: darken(#69dd09, 10%);
+        background-color: darken(#4F46E5, 10%);
         transform: translateY(-2px);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
@@ -221,12 +222,12 @@
       font-size: 3rem;
 
       .hero:hover & {
-        color: #69dd09;
+        color: #4F46E5;
       }
 
       &-highlight {
         .hero:hover & {
-          color: lighten(#69dd09, 10%);
+          color: lighten(#4F46E5, 10%);
         }
       }
     }

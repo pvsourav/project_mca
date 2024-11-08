@@ -74,8 +74,10 @@ router.post("/alumnicompleteprofile", function (req, res) {
 
       image.mv(imagePath, (err) => {
         if (err) {
+          console.log("Image upload failed" )
           return res.status(500).json({ error: "Image upload failed" });
         }
+        console.log("Profile completed successfully" )
         res.json({ message: "Profile completed successfully" });
       });
     } else {
@@ -114,11 +116,7 @@ router.post("/updateMeetup", async (req, res) => {
 
   
 });
-router.post("/sendmessage", (req, res) => {
-  alumniHelper.sendMessage(req.body).then((response) => {
-    res.json(response);
-  });
-});
+
 router.post("/sendmessage", (req, res) => {
   alumniHelper.sendMessage(req.body).then((response) => {
     res.json(response);
