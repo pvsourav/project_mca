@@ -5,17 +5,20 @@ import './contributions.scss';
 import ContentCard from './ContentCard';
 import { Link } from 'react-router-dom';
 import { contentData } from '../../../../DataBase';
+import { userInstance } from '../../../../UserContext';
 
 const Contributions = () => {
+  const userData = userInstance();
+
   return (
     <div className="profiles-container">
       <div className="search-filter-bar">
-        <Link to="/admin/cms/addnews" className="action-button-primary"><PlusCircle size={20} />Add News</Link>
+        <Link to="/admin/cms/addnews" className="action-button-primary"><PlusCircle size={20} />Contribute</Link>
         <div className="search-wrapper">
           <Search className="search-icon" size={20} />
           <input
             type="text"
-            placeholder="Search People"
+            placeholder="Search"
             className="search-input"
           />
         </div>

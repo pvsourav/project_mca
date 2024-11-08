@@ -1,61 +1,41 @@
 import React, { useState } from 'react';
-import { MeetupsData } from '../../../../DataBase'; // Assuming MeetupsData is imported here
+import axios from 'axios';
 import './meetupform.scss';
 
 const MeetupForm = () => {
+
+  
   const [formData, setFormData] = useState({
     title: '',
     date: '',
     time: '',
     venue: '',
     description: '',
-    visibility: 'off' // Initialize visibility as 'off'
+    organiser: userData.email,
+    approval: 'false',
   });
 
+  
+
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
+    setFormData((prevData) => ({ ...prevData, [field]: value }));
   };
 
   const handleToggleChange = (checked) => {
-    setFormData(prev => ({
-      ...prev,
-      visibility: checked ? 'on' : 'off' // Set to 'on' if checked, 'off' otherwise
+    setFormData((prevData) => ({
+      ...prevData,
+      visibility: checked ? 'true' : 'false',
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Create a new meetup item
-    const newMeetupItem = {
-      organiser: MeetupsData.length + 101, // Generating a unique organiser ID
-      title: formData.title,
-      date: formData.date,
-      time: formData.time,
-      venue: formData.venue,
-      description: formData.description,
-      approval: formData.visibility === 'on' ? 'required' : 'not required'
-    };
-
-    // Add the new meetup item to the MeetupsData array
-    MeetupsData.push(newMeetupItem);
-    console.log(newMeetupItem);
-    
-
-    // Reset the form
-    setFormData({
-      newsTitle: '',
-      newsDate: '',
-      newsTime: '',
-      newsVenue: '',
-      newsDescription: '',
-      visibility: 'off'
-    });
-
-    console.log('Form submitted:', newMeetupItem);
+    try {
+      const response = await axios.post('http://192.168.29.250:3000/addmeetup', formData);
+      console.log('Meetup added:', response.data);
+    } catch (error) {
+      console.error('Error adding meetup:', error);
+    }
   };
 
   return (
@@ -76,8 +56,8 @@ const MeetupForm = () => {
               <label>Title</label>
               <input
                 type="text"
-                value={formData.newsTitle}
-                onChange={(e) => handleInputChange('newsTitle', e.target.value)}
+                value={formData.title}
+                onChange={(e) => handleInputChange('title', e.target.value)}
               />
             </div>
 
@@ -85,36 +65,34 @@ const MeetupForm = () => {
               <label>Date</label>
               <input
                 type="date"
-                value={formData.newsDate}
-                onChange={(e) => handleInputChange('newsDate', e.target.value)}
+                value={formData.date}
+                onChange={(e) => handleInputChange('date', e.target.value)}
               />
             </div>
 
-            {/* Added Time Field */}
             <div className="form-field">
               <label>Time</label>
               <input
                 type="time"
-                value={formData.newsTime}
-                onChange={(e) => handleInputChange('newsTime', e.target.value)}
+                value={formData.time}
+                onChange={(e) => handleInputChange('time', e.target.value)}
               />
             </div>
 
-            {/* Added Venue Field */}
             <div className="form-field">
               <label>Venue</label>
               <input
                 type="text"
-                value={formData.newsVenue}
-                onChange={(e) => handleInputChange('newsVenue', e.target.value)}
+                value={formData.venue}
+                onChange={(e) => handleInputChange('venue', e.target.value)}
               />
             </div>
 
             <div className="form-field">
               <label>Description</label>
               <textarea
-                value={formData.newsDescription}
-                onChange={(e) => handleInputChange('newsDescription', e.target.value)}
+                value={formData.description}
+                onChange={(e) => handleInputChange('description', e.target.value)}
                 rows={4}
               />
             </div>
@@ -130,14 +108,13 @@ const MeetupForm = () => {
             <div className="toggle-switch">
               <input
                 type="checkbox"
-                checked={formData.visibility === 'on'} // Bind visibility to checkbox
+                checked={formData.visibility === 'true'}
                 onChange={(e) => handleToggleChange(e.target.checked)}
                 id="status-toggle"
               />
               <label className="slider" htmlFor="status-toggle"></label>
             </div>
-            {/* Display the text based on the toggle state */}
-            <p>{formData.visibility === 'on' ? 'Required' : 'Not Required'}</p>
+            {/* <p>{formData.visibility === 'on' ? 'true' : 'false'}</p> */}
           </div>
         </div>
 

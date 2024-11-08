@@ -12,7 +12,7 @@ const ContentCard = ({ content }) => {
       <div className="content-card__header">
         <div className="content-card__profile">
           <p>Posted by :</p>
-          <h3 className="content-card__name">{owner.name}</h3>
+          <h3 className="content-card__name">{owner}</h3>
         </div>
       </div>
       <div className="content-card__content">

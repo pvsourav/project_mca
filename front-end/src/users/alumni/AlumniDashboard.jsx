@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Bell, Settings, ChevronDown, ChevronRight, ArrowLeft, X, UsersRound } from 'lucide-react';
 import './alumnidashboard.scss';
+import axios from 'axios';
 import user from '../../assets/tkm.png';
 import logo from '../../assets/tkm.png';
 import SideBar from '../../components/SideBar';
@@ -13,10 +14,11 @@ import Contributions from './pages/contributions/Contributions';
 import RegistrationsTable from './pages/contributions/Registrations';
 import ContentDetails from './pages/contributions/ContentDetails';
 import { MessagesData } from '../../DataBase';
-import { Home, Users as UsersIcon, FileText} from 'lucide-react';
+import { Home, Users as UsersIcon, FileText } from 'lucide-react';
 import BatchDisplay from './pages/my-batch/BatchDisplay';
 import MeetupForm from './pages/my-batch/MeetupForm';
 import MeetupInfo from './pages/my-batch/MeetupInfo';
+import { userInstance } from '../../UserContext';
 
 const navItems = [
   { name: 'Dashboard', icon: <Home />, route: '/alumni/dashboard' },
@@ -29,26 +31,47 @@ const formatPath = (path) => {
   return path.charAt(0).toUpperCase() + path.slice(1);
 };
 
-const alumniDashboard = () => {
+const AlumniDashboard = () => {
   const location = useLocation();
   const [isMessagesVisible, setIsMessagesVisible] = useState(false);
   const pathSegments = location.pathname.split('/').filter((segment) => segment);
   const currentRoute = pathSegments[pathSegments.length - 1];
+  // const [userData, setUserData] = useState('');
+  const userData = userInstance();
+
+  // useEffect(() => {
+  //   // Fetch profile data on component mount
+  //   const fetchProfileData = async () => {
+  //     try {
+  //       const response = await axios.get('http://192.168.29.250:3000/profile', {
+  //         withCredentials: true,
+  //       });
+
+  //       setUserData(response.data[0]);      
+  
+  //     } catch (error) {
+  //       console.error('Error fetching profile data:', error);
+  //     }
+  //   };
+  
+  //   fetchProfileData();
+  // }, []);
+  
 
   const toggleMessages = () => {
     setIsMessagesVisible(!isMessagesVisible);
     console.log(isMessagesVisible);
   };
+  
 
   return (
     <div className="dashboard-layout">
-      {/* Pass the props to SideBar */}
-      <SideBar logo={logo} title="User" navItems={navItems} />
+      <SideBar logo={logo} title={userData.name} navItems={navItems} />
 
       <div className="main-content">
         <header className="top-header">
           <div className="breadcrumb-back-wrapper">
-            <ArrowLeft className='icon'/>
+            <ArrowLeft className="icon" />
             <div className="breadcrumb">
               {pathSegments.map((segment, index) => (
                 <React.Fragment key={index}>
@@ -67,19 +90,18 @@ const alumniDashboard = () => {
             <div className="user-profile">
               <img src={user} alt="User" />
               <div className="user-info">
-                <div className="user-name">John Doe</div>
-                <div className="user-role">alumni</div>
+                {/* Optional user info */}
               </div>
               <ChevronDown size={16} />
             </div>
-            <Bell className="bell-icon" onClick={toggleMessages}/>
+            <Bell className="bell-icon" onClick={toggleMessages} />
             <Settings />
           </div>
         </header>
 
         <main className="content-holder">
           <div className="routes">
-            <h1>{formatPath(currentRoute)}</h1>
+            {/* <h1>{formatPath(currentRoute)}</h1> */}
             <Routes>
               <Route index element={<Navigate to="/alumni/dashboard" replace />} />
               <Route path="my-batch" element={<BatchDisplay />} />
@@ -95,14 +117,14 @@ const alumniDashboard = () => {
           </div>
 
           <div className={`messages-section ${isMessagesVisible ? 'show' : ''}`}>
-            <div className='messages-container'>
+            <div className="messages-container">
               <div className="messages-header">
                 <h2>Messages</h2>
                 <button className="close-button" onClick={toggleMessages}>
                   <X size={20} />
                 </button>
               </div>
-              
+
               <div className="message-list">
                 {MessagesData.map((message) => (
                   <div key={message.id} className="message-item">
@@ -128,4 +150,4 @@ const alumniDashboard = () => {
   );
 };
 
-export default alumniDashboard;
+export default AlumniDashboard;

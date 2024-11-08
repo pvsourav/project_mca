@@ -8,33 +8,37 @@ import back1 from '../assets/back1.jpg';
 import './signin.scss';
 
 const SignIn = () => {
-  const { register, handleSubmit, formState: { errors }, watch } = useForm();
-  const [isLoading, setIsLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [apiError, setApiError] = useState(null);
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
-  const password = watch("password");
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiError, setApiError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async (data) => {
     setIsLoading(true);
     setApiError(null);
-
+  
     try {
-      const response = await axios.post('http://localhost:3000/signin', {
-        email: data.email,
-        password: data.password
-      }, {
-        withCredentials: true,
-        headers: { 'Content-Type': 'application/json' }
-      });
-
+      const response = await axios.post(
+        'http://192.168.29.250:3000/signin',
+        {
+          email: data.email,
+          password: data.password,
+        },
+        {
+          withCredentials: true,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+  
       const { status, userType } = response.data.response;
-
+  
       if (status === 'success') {
         if (userType === 'admin') {
           navigate('/admin');
+        } else if (userType === 'alumni') {
+          navigate('/alumni');
         } else {
-          // Handle other user types if necessary
           navigate('/dashboard');
         }
       }
@@ -116,15 +120,13 @@ const SignIn = () => {
                     className={errors.password ? 'error' : ''}
                     {...register("password", { required: "Password is required" })}
                   />
-                  {password && (
-                    <button
-                      type="button"
-                      className="toggle-password"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? <EyeOff className='icon' /> : <Eye className='icon' />}
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    className="toggle-password"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff className='icon' /> : <Eye className='icon' />}
+                  </button>
                 </div>
                 {errors.password && <span className="error-message"><AlertCircle className='icon' />{errors.password.message}</span>}
               </div>
@@ -141,7 +143,7 @@ const SignIn = () => {
 
             </form>
             <p className="sign-up-link">
-              Don't have an account? <Link to="/sign-up" className="">Sign in</Link>
+              Don't have an account? <Link to="/sign-up">Sign up</Link>
             </p>
           </div>
         </div>

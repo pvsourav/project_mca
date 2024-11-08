@@ -1,32 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProfileCard from '../../../../components/ProfileCard';
 import './batchdisplay.scss';
-import { UserData, MeetupsData } from '../../../../DataBase'; // Ensure MeetupsData is imported
-import { PlusCircle, Search, UsersRound } from 'lucide-react';
+import { Search, UsersRound } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { userInstance } from '../../../../UserContext';
 
 const BatchDisplay = () => {
-  const filteredUserData = UserData.filter(profile => profile.batch === '2021');
-
-  // Check if there are any meetups for batch '2021'
-  const hasMeetupForBatch2021 = MeetupsData.some(meetup => meetup.batch === '2021');
+  const [alumniData, setAlumniData] = useState([]);
+  const userData = userInstance();
   
-  // Get the count of meetups for batch '2021'
-  const batch2021MeetupsCount = MeetupsData.filter(meetup => meetup.batch === '2021').length;
+
+  useEffect(() => {
+    axios.get('http://192.168.29.250:3000/alumnidetails', 
+      { withCredentials: true })
+      .then(res => {
+        console.log('Fetched alumni data:', res.data); // Log the response for debugging
+        setAlumniData(res.data); // Set the fetched data to state
+      })
+      .catch(err => {
+        console.error('Error fetching alumni details:', err);
+      });
+  }, []);
 
   return (
     <div className="profiles-container">
       <div className="search-filter-bar">
         <Link
-          to={hasMeetupForBatch2021 ? "/alumni/my-batch/meetup-info" : "/alumni/my-batch/meetup"}
+          to={"/alumni/my-batch/meetup"}
           className="meetup-button"
         >
           <UsersRound size={20} />Meetup
-          {hasMeetupForBatch2021 && (
-          <div className="meetup-badge">
-            <span>{batch2021MeetupsCount}</span>
-          </div>
-        )}
         </Link>
         <div className="search-wrapper">
           <Search className="search-icon" size={20} />
@@ -38,8 +42,8 @@ const BatchDisplay = () => {
         </div>
       </div>
       <div className="profiles-wrapper">
-        {filteredUserData.length > 0 ? (
-          filteredUserData.map(profile => (
+        {alumniData.length > 0 ? (
+          alumniData.map(profile => (
             <ProfileCard
               key={profile.id}
               name={profile.name}

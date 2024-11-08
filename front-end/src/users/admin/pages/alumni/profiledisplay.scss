@@ -11,6 +11,26 @@
   align-items: center;
   justify-content: space-between; 
   margin-bottom: 30px;
+  
+
+  .meetup-button {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    background-color: #15142b;
+    color: #ffffff;
+    text-decoration: none;
+    height: 100%;
+
+    svg {
+      margin-right: 0.5rem;
+    }
+    
+  }
 
   .search-wrapper {
     width: 500px;

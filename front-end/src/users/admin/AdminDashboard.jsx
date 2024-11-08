@@ -15,6 +15,8 @@ import RegistrationsTable from './pages/contributions/Registrations';
 import ContentDetails from './pages/contributions/ContentDetails';
 import { MessagesData } from '../../DataBase';
 import { Home, Users as UsersIcon, UserCircle, FileText, Book } from 'lucide-react';
+import MeetupInfo from '../alumni/pages/my-batch/MeetupInfo';
+import Meetups from './pages/alumni/Meetups';
 
 const navItems = [
   { name: 'Dashboard', icon: <Home />, route: '/admin/dashboard' },
@@ -79,13 +81,14 @@ const AdminDashboard = () => {
 
         <main className="content-holder">
           <div className="routes">
-            <h1>{formatPath(currentRoute)}</h1>
+            {/* <h1>{formatPath(currentRoute)}</h1> */}
             <Routes>
               <Route index element={<Navigate to="/admin/dashboard" replace />} />
               <Route path="alumni" element={<ProfileDisplay />} />
               <Route path="alumni/userprofile" element={<UserProfile />} />
               <Route path="contributions/:title/registrations" element={<RegistrationsTable />} />
               <Route path="contributions" element={<Contributions />} />
+              <Route path="alumni/meetups" element={<Meetups />} />
               <Route path="cms" element={<ContentManagement />} />
               <Route path="cms/addnews" element={<NewsForm />} />
               <Route path="users" element={<Users />} />

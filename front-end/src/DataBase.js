@@ -245,7 +245,7 @@ export const UserData = [
 export const contentData = [
     {
       eventId: "1",
-      owner: { name: "Jon Doe", profilePhoto: "https://example.com/path/to/photo1.png" },
+      owner: "Anand",
       title: "Workshop on IoT",
       description: "A comprehensive 2-day workshop on IoT, covering sensor integration and real-world applications.",
       type: "Workshop",
@@ -259,7 +259,7 @@ export const contentData = [
     },
     {
       eventId: "2",
-      owner: { name: "Jane Smith", profilePhoto: "https://example.com/path/to/photo2.png" },
+      owner: "Anand",
       title: "AI and Machine Learning Seminar",
       description: "An interactive seminar exploring AI trends, machine learning algorithms, and industry use cases.",
       type: "Seminar",
@@ -273,7 +273,7 @@ export const contentData = [
     },
     {
       eventId: "3",
-      owner: { name: "Mike Johnson", profilePhoto: "https://example.com/path/to/photo3.png" },
+      owner: "Anand",
       title: "Web Development Bootcamp",
       description: "A hands-on bootcamp on modern web development, focusing on HTML, CSS, JavaScript, and React.",
       type: "Bootcamp",
@@ -287,7 +287,7 @@ export const contentData = [
     },
     {
       eventId: "4",
-      owner: { name: "Sarah Williams", profilePhoto: "https://example.com/path/to/photo4.png" },
+      owner: "Anand",
       title: "Blockchain Basics",
       description: "Introduction to blockchain technology and its applications in finance, supply chain, and more.",
       type: "Workshop",
@@ -301,7 +301,7 @@ export const contentData = [
     },
     {
       eventId: "5",
-      owner: { name: "Emily Davis", profilePhoto: "https://example.com/path/to/photo5.png" },
+      owner: "Anand",
       title: "Cybersecurity Essentials",
       description: "A detailed workshop on cybersecurity best practices, focusing on data protection and network security.",
       type: "Workshop",
@@ -315,7 +315,7 @@ export const contentData = [
     },
     {
       eventId: "6",
-      owner: { name: "James Brown", profilePhoto: "https://example.com/path/to/photo6.png" },
+      owner: "Anand",
       title: "Data Science with Python",
       description: "A workshop covering data analysis, visualization, and machine learning using Python.",
       type: "Workshop",
@@ -329,7 +329,7 @@ export const contentData = [
     },
     {
       eventId: "7",
-      owner: { name: "Olivia Miller", profilePhoto: "https://example.com/path/to/photo7.png" },
+      owner: "Anand",
       title: "Cloud Computing Fundamentals",
       description: "Understanding cloud services and infrastructure, with hands-on examples in AWS and Azure.",
       type: "Seminar",
@@ -343,7 +343,7 @@ export const contentData = [
     },
     {
       eventId: "8",
-      owner: { name: "Daniel Wilson", profilePhoto: "https://example.com/path/to/photo8.png" },
+      owner: "Anand",
       title: "Digital Marketing 101",
       description: "A seminar on digital marketing strategies, including SEO, PPC, and social media marketing.",
       type: "Seminar",
@@ -357,7 +357,7 @@ export const contentData = [
     },
     {
       eventId: "9",
-      owner: { name: "Sophia Garcia", profilePhoto: "https://example.com/path/to/photo9.png" },
+      owner: "Anand",
       title: "Introduction to Big Data",
       description: "Learn the fundamentals of big data, including data storage, processing, and analysis techniques.",
       type: "Workshop",
@@ -371,7 +371,7 @@ export const contentData = [
     },
     {
       eventId: "10",
-      owner: { name: "Liam Martinez", profilePhoto: "https://example.com/path/to/photo10.png" },
+      owner: "Anand",
       title: "Mobile App Development",
       description: "A workshop on mobile app development for Android and iOS using React Native.",
       type: "Workshop",
@@ -543,56 +543,7 @@ export const NewsData = [
 ];
 
 export const MeetupsData = [
-  {
-    organiser: 101,
-    title: "Tech Talk: AI in Modern Apps",
-    date: "2024-11-15",
-    time: "10:00 AM",
-    venue: "Tech Hub Auditorium",
-    description: "A deep dive into the role of AI in modern application development, exploring use cases, tools, and frameworks.",
-    approval: "",
-    batch: "2022" // Added batch field
-  },
-  {
-    organiser: 102,
-    title: "Coding Bootcamp for Beginners",
-    date: "2024-11-18",
-    time: "2:00 PM",
-    venue: "Room 305, Innovation Center",
-    description: "A hands-on coding bootcamp for beginners focusing on JavaScript and basic web development.",
-    approval: "",
-    batch: "2021" // Added batch field
-  },
-  {
-    organiser: 103,
-    title: "React.js Workshop",
-    date: "2024-11-22",
-    time: "9:00 AM",
-    venue: "Lab 102, Computer Science Block",
-    description: "An interactive workshop to get hands-on experience with React.js, including practical coding exercises.",
-    approval: "",
-    batch: "2022" // Added batch field
-  },
-  {
-    organiser: 104,
-    title: "Career Fair 2024",
-    date: "2024-11-25",
-    time: "11:00 AM",
-    venue: "Main Hall, Career Center",
-    description: "A career fair with top industry leaders and recruiters offering job opportunities and internships.",
-    approval: "",
-    batch: "2022" // Added batch field
-  },
-  {
-    organiser: 105,
-    title: "Cybersecurity Awareness Seminar",
-    date: "2024-12-01",
-    time: "1:00 PM",
-    venue: "Room 201, Science Building",
-    description: "A seminar focused on the latest trends in cybersecurity and how to protect against common cyber threats.",
-    approval: "",
-    batch: "2023" // Added batch field
-  }
+
 ];
 
 

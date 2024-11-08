@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Search, FileText, Users, Calendar, MapPin } from 'lucide-react';
+import { Search, FileText, Users, Calendar, MapPin, UsersRound } from 'lucide-react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ProfileCard from '../../../../components/ProfileCard';
 import './profiledisplay.scss';
+import { Link } from 'react-router-dom';
 
 const profiles = [
   {
@@ -265,6 +266,12 @@ const ProfileDisplay = () => {
   return (
     <div className="profiles-container">
       <div className="search-filter-bar">
+      <Link
+          to={"/admin/alumni/meetups"}
+          className="meetup-button"
+        >
+          <UsersRound size={20} />Meetups
+        </Link>
         <div className="search-wrapper">
           <Search className="search-icon" size={20} />
           <input
