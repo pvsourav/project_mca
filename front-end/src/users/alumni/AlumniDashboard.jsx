@@ -19,6 +19,7 @@ import BatchDisplay from './pages/my-batch/BatchDisplay';
 import MeetupForm from './pages/my-batch/MeetupForm';
 import MeetupInfo from './pages/my-batch/MeetupInfo';
 import { userInstance } from '../../UserContext';
+import avatar from '../../assets/user.png'
 
 const navItems = [
   { name: 'Dashboard', icon: <Home />, route: '/alumni/dashboard' },
@@ -88,7 +89,7 @@ const AlumniDashboard = () => {
 
           <div className="user-actions">
             <div className="user-profile">
-              <img src={user} alt="User" />
+              <img src={avatar} alt="User" />
               <div className="user-info">
                 {/* Optional user info */}
               </div>

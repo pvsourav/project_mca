@@ -2,6 +2,7 @@ import React from 'react';
 import './sidebar.scss';
 import { Menu } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import avatar from '../assets/user.png'
 
 const SideBar = ({ logo, title, navItems }) => {
   const location = useLocation();
@@ -11,7 +12,7 @@ const SideBar = ({ logo, title, navItems }) => {
       <div className="sidebar-header">
         <div className="logo">
           <div className="logo-icon">
-            <img src={logo} alt="logo" />
+            <img src={avatar} alt="logo" />
           </div>
           <span className="company-name">{title}</span>
         </div>
