@@ -27,7 +27,6 @@ module.exports = {
     
     doSignin: (userData) => {
         return new Promise(async (resolve, reject) => {
-            let response = {};
             let user = await db.get().collection(collection.USER_COLLECTION).findOne({ email: userData.email });
             
             if (user) {
@@ -43,7 +42,8 @@ module.exports = {
                         resolve({
                             status: 'success',
                             email: user.email,
-                            userType: user.userType
+                            userType: user.userType,
+                            userId: user._id // Include MongoDB ObjectId in the response
                         });
                     } else {
                         resolve({ status: 'passwordIncorrect' });
@@ -57,5 +57,6 @@ module.exports = {
             }
         });
     }
+    
     
 }

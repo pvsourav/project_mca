@@ -25,16 +25,24 @@ db.connect((err) => {
 
 // Session configuration
 app.use(session({
-  secret: 'your-secret-key', // Replace with a unique key in production
+  secret: "your_secret_key",
   resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false } // Use secure: true in production with HTTPS
+  saveUninitialized: true,
+  cookie: { secure: false, httpOnly: true }
 }));
 
 // Enable CORS for your frontend (adjust URL if needed)
+const allowedOrigins = ['http://localhost:5173', 'http://192.168.29.252:5173'];
+
 app.use(cors({
-  origin: '*', // Frontend URL
-  credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow cookies or credentials
 }));
 
 // Use your routes
